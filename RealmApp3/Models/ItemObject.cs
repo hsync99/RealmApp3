@@ -12,7 +12,7 @@ namespace RealmApp3.Models
         public ItemType type { get; set; }
         public Manufactorer manufactorer { get; set; }
         public string model { get; set; }
-        public string serial { get; set; }
+        public int serial { get; set; }
         //public IList<ParamValue> values { get; }
         public ParamValue paramvalue { get; set; }
         public Param param { get; set; }

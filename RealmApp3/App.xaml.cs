@@ -10,8 +10,8 @@ namespace RealmApp3
         {
             InitializeComponent();
 
-            //MainPage = new ListPage1();
-           MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new DeletePage();
         }
 
         protected override void OnStart()
