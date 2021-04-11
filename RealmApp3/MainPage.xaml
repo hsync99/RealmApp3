@@ -2,58 +2,131 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RealmApp3.MainPage"
-    xmlns:itemsVm="clr-namespace:RealmApp3.ViewModels">
+    xmlns:itemsVm="clr-namespace:RealmApp3.ViewModels"
+              >
     <ContentPage.BindingContext>
         <itemsVm:ItemViewModels/>
     </ContentPage.BindingContext>
-    <StackLayout Padding="50">
-        <Entry
-            Placeholder="Name"
-            Text="{Binding ItemObject.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Model"
-            Text="{Binding ItemObject.model, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Serial"
-            Text="{Binding ItemObject.serial, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Manufactorer"
-            Text="{Binding Manufactorer.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Type"
-            Text="{Binding ItemType.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Parameter"
-            Text="{Binding Param.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Parameter Value"
-            Text="{Binding ParamValue.value, Mode=TwoWay}"/>
-
-        
-        <Button Text="ADD"
+    <Grid>
+       
+        <ScrollView>
+            <StackLayout x:Name="stackLayout" Padding="10" BackgroundColor= "#555555">
+                <Frame BackgroundColor="Yellow" Padding="24" CornerRadius="12" BorderColor="Black" HasShadow="True">
+                    <Label Text="Main Page" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+                </Frame>
+                <FlexLayout Padding="0">
+                   
+                    <Button Text="SHOW"
                 FontAttributes="Bold"
                     TextColor="Black"
-                    BackgroundColor="LightBlue"
-                    Command="{Binding CreateCommand}"
-                CornerRadius="20"/>
-        <Button Text="Go to list"
-                FontAttributes="Bold"
-                    TextColor="Black"
-                    BackgroundColor="LightBlue"
+                    BackgroundColor="Yellow"
                     Command="{Binding NavToListCommand}"
-                CornerRadius="20"/>
-        <Button Text="REMOVE"
+                      />
+                    <Button Text="REMOVE"
                 FontAttributes="Bold"
                     TextColor="Black"
-                    BackgroundColor="Red"
-                    Command="{Binding DeleteCommand}"
-                CornerRadius="20"/>
-        <Button Text="ADD TO TABLE"
+                    BackgroundColor="RED"
+                    Command="{Binding NavToDeletePage}" />
+                    <Button Text="AUTO FILL"
                 FontAttributes="Bold"
                     TextColor="Black"
-                    BackgroundColor="GREEN"
-                    Command="{Binding mysql_Add_Command}"
-                CornerRadius="20"/>
-    </StackLayout>
+                    BackgroundColor="Yellow"
+                    Clicked="Button_Clicked"
+                   
+                          />
+                    <Button Text="ADD NEW"
+                FontAttributes="Bold"
+                    TextColor="Black"
+                            Command="{Binding NavToAddNewParamPage}"
+                    BackgroundColor="Yellow"
+                   
+                      />
+                    <Button Text="SCAN"
+                FontAttributes="Bold"
+                    TextColor="Black"
+                            Command="{Binding NavToBarcodePage}"
+                    BackgroundColor="Yellow" />
+                </FlexLayout>
+                <Button x:Name="createButton"
+                    Text="CREATE"
+                FontAttributes="Bold"
+                    TextColor="Black"
+                    BackgroundColor="Yellow"
+                    Command="{Binding CreateCommand}"
+                    Clicked="Button_Clicked_2"
+                      
+                            />
+                <Entry
+                   
+                x:Name="NAME"
+            Placeholder="Name"
+            Text="{Binding ItemObject.name, Mode=TwoWay}"
+                 BackgroundColor="DarkGray"
+                />
+                <Entry
+                    
+                x:Name="MODEL"
+            Placeholder="Model"
+            Text="{Binding ItemObject.model, Mode=TwoWay}"
+             BackgroundColor="DarkGray"
+                />
+                <Entry
+                   
+                x:Name="SERIAL"
+            Placeholder="Serial"
+            Text="{Binding ItemObject.serial, Mode=TwoWay}"
+             BackgroundColor="DarkGray"
+                    />
+            <Entry
+                
+                x:Name="MANUFACTORER"
+            Placeholder="Manufactorer"
+            Text="{Binding Manufactorer.name, Mode=TwoWay}"
+             BackgroundColor="DarkGray"
+                />
+            <Entry
+                
+                x:Name="TYPE"
+            Placeholder="Type"
+            Text="{Binding ItemType.name, Mode=TwoWay}"
+            BackgroundColor="DarkGray"
+                />
+            <Entry
+                
+                x:Name="PARAMETER"
+            Placeholder="Parameter"
+            Text="{Binding Param.name, Mode=TwoWay}"
+             BackgroundColor="DarkGray"
+                />
+                <Entry
+                    
+                x:Name="PARAMVALUE"
+            Placeholder="Value"
+            Text="{Binding Param.value, Mode=TwoWay}"
+             BackgroundColor="DarkGray"
+                />
+                <Button x:Name="addnewParam"
+                    Text="ADD NEW PARAM"
+                    BackgroundColor="Yellow"
+                FontAttributes="Bold"
+                    TextColor="Black"
+                  Command="{Binding AddNewParam}"
+                  Clicked="addnewParam_Clicked"
+                       IsVisible="False"
+                 />
+                <Button x:Name="Finish"
+                    Text="FINISH"
+                    BackgroundColor="Yellow"
+                FontAttributes="Bold"
+                    TextColor="Black"
+                  Clicked="Finish_Clicked"
+                  
+                       IsVisible="False"
+                 />
+
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 
 </ContentPage>
