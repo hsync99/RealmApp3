@@ -7,8 +7,20 @@ namespace RealmApp3.Models
 {
    public  class Param: RealmObject
     {
+        
         //public string id { get; } = Guid.NewGuid().ToString();
+        
+        public int id; 
+           
+        
         public string name { get; set; }
-        public ItemType itemType { get; set; }
+        public string value { get; set; }
+
+        public void dfsdfsdf()
+        {
+            Random rnd2 = new Random();
+            id = rnd2.Next(0, 100);
+        }
     }
+   
 }

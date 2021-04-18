@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using RealmApp3.Views;
+
 namespace RealmApp3
 {
     public partial class App : Application
@@ -10,8 +10,7 @@ namespace RealmApp3
         {
             InitializeComponent();
 
-            //MainPage = new ListPage1();
-           MainPage = new MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
