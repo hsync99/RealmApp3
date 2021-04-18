@@ -3,57 +3,230 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RealmApp3.MainPage"
     xmlns:itemsVm="clr-namespace:RealmApp3.ViewModels">
+
     <ContentPage.BindingContext>
         <itemsVm:ItemViewModels/>
     </ContentPage.BindingContext>
-    <StackLayout Padding="50">
-        <Entry
-            Placeholder="Name"
-            Text="{Binding ItemObject.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Model"
-            Text="{Binding ItemObject.model, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Serial"
-            Text="{Binding ItemObject.serial, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Manufactorer"
-            Text="{Binding Manufactorer.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Type"
-            Text="{Binding ItemType.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Parameter"
-            Text="{Binding Param.name, Mode=TwoWay}"/>
-        <Entry
-            Placeholder="Parameter Value"
-            Text="{Binding ParamValue.value, Mode=TwoWay}"/>
 
-        
-        <Button Text="ADD"
-                FontAttributes="Bold"
-                    TextColor="Black"
-                    BackgroundColor="LightBlue"
-                    Command="{Binding CreateCommand}"
-                CornerRadius="20"/>
-        <Button Text="Go to list"
-                FontAttributes="Bold"
-                    TextColor="Black"
-                    BackgroundColor="LightBlue"
-                    Command="{Binding NavToListCommand}"
-                CornerRadius="20"/>
-        <Button Text="REMOVE"
-                FontAttributes="Bold"
-                    TextColor="Black"
-                    BackgroundColor="Red"
-                    Command="{Binding DeleteCommand}"
-                CornerRadius="20"/>
-        <Button Text="ADD TO TABLE"
-                FontAttributes="Bold"
-                    TextColor="Black"
-                    BackgroundColor="GREEN"
-                    Command="{Binding mysql_Add_Command}"
-                CornerRadius="20"/>
-    </StackLayout>
+
+    <AbsoluteLayout >
+        <Frame HeightRequest="900" WidthRequest="{OnPlatform 250, iOS=315, Android=360, UWP=1000}"  HasShadow="True" Margin="0" HorizontalOptions="FillAndExpand" Padding="0" BackgroundColor="White">
+        </Frame>
+        <Frame HeightRequest="530" WidthRequest="{OnPlatform 250, iOS=315, Android=360, UWP=750}"  HasShadow="True" HorizontalOptions="FillAndExpand" Padding="0" CornerRadius="10" Opacity="0.2" BackgroundColor="#4B4E51">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="10, 75, 0, 0" />
+                    <On Platform="Android" Value="10, 75, 0, 0" />
+                    <On Platform="UWP" Value="150, 75, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+        </Frame>
+        <Frame HeightRequest="70" WidthRequest="{OnPlatform 340, iOS=340, Android=340, UWP=975}"  HasShadow="True"  HorizontalOptions="CenterAndExpand" Padding="0" CornerRadius="10" Opacity="0.4" BackgroundColor="Black">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="10, 0, 0, 0" />
+                    <On Platform="Android" Value="10, 0, 0, 0" />
+                    <On Platform="UWP" Value="10, 0, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Label Text="New Item" TextColor="White" FontSize="56" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            </Label>
+        </Frame>
+        <Label Text="Name"  WidthRequest="315" HeightRequest="25" FontSize="12"  Opacity="1" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 110, 0, 0" />
+                    <On Platform="Android" Value="25, 110, 0, 0" />
+                    <On Platform="UWP" Value="510, 122, 0, 0" />
+                </OnPlatform> 
+            </Label.Margin>
+        </Label>
+        <Label Text="Model"  WidthRequest="315" HeightRequest="25" FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 160, 0, 0" />
+                    <On Platform="Android" Value="25, 170, 0, 0" />
+                    <On Platform="UWP" Value="510, 172, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+        <Label Text="Manufactorer"  WidthRequest="315" HeightRequest="25"  FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 235, 0, 0" />
+                    <On Platform="Android" Value="25, 230, 0, 0" />
+                    <On Platform="UWP" Value="510, 222, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+        <Label Text="Type"  WidthRequest="150" HeightRequest="25"  FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 290, 0, 0" />
+                    <On Platform="Android" Value="25, 290, 0, 0" />
+                    <On Platform="UWP" Value="510, 272, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+        <Label Text="Serial"  WidthRequest="150" HeightRequest="25"  FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 350, 0, 0" />
+                    <On Platform="Android" Value="25, 350, 0, 0" />
+                    <On Platform="UWP" Value="510, 322, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+        <Label Text="Parameter"  WidthRequest="150" HeightRequest="25" FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 410, 0, 0" />
+                    <On Platform="Android" Value="25, 410, 0, 0" />
+                    <On Platform="UWP" Value="510, 402, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+        <Label Text="Value"  WidthRequest="315" HeightRequest="25"  FontSize="12" TextColor="Black">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 410, 0, 0" />
+                    <On Platform="Android" Value="25, 410, 0, 0" />
+                    <On Platform="UWP" Value="675, 402, 0, 0" />
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+
+
+        <Frame  WidthRequest="{OnPlatform 250, iOS=315, Android=315, UWP=315 }" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5" IsClippedToBounds="True" >
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 140, 0, 0" />
+                    <On Platform="Android" Value="25, 140, 0, 0" />
+                    <On Platform="UWP" Value="510, 140, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry x:Name="NAME"  Text="{Binding ItemObject.name, Mode=TwoWay}"  Placeholder="string 1" FontSize="Micro">
+                  
+            </Entry>
+        </Frame>
+        <Frame  WidthRequest="315" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 190, 0, 0" />
+                    <On Platform="Android" Value="25, 190, 0, 0" />
+                    <On Platform="UWP" Value="510, 190, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry  x:Name="MODEL" Text="{Binding ItemObject.model, Mode=TwoWay}" Placeholder="string 2" FontSize="Micro"/>
+        </Frame>
+        <Frame WidthRequest="315" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5" >
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 240, 0, 0" />
+                    <On Platform="Android" Value="25, 240, 0, 0" />
+                    <On Platform="UWP" Value="510, 240, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry  x:Name="MANUFACTORER" Text="{Binding Manufactorer.name, Mode=TwoWay}" Placeholder="string 3" FontSize="Micro"/>
+        </Frame>
+        <Frame WidthRequest="315" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 290, 0, 0" />
+                    <On Platform="Android" Value="25, 300, 0, 0" />
+                    <On Platform="UWP" Value="510, 290, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry x:Name="TYPE"  Text="{Binding ItemType.name, Mode=TwoWay}"  Placeholder="string 4" FontSize="Micro" />
+        </Frame>
+        <Frame WidthRequest="315" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5" >
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 340, 0, 0" />
+                    <On Platform="Android" Value="25, 340, 0, 0" />
+                    <On Platform="UWP" Value="510, 340, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry   x:Name="SERIAL" Text="{Binding ItemObject.serial, Mode=TwoWay}" Placeholder="SERIAL" FontSize="Micro"  />
+        </Frame>
+        <Frame x:Name="paramframe" WidthRequest="150" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5" IsVisible="true" >
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 430, 0, 0" />
+                    <On Platform="Android" Value="25, 430, 0, 0" />
+                    <On Platform="UWP" Value="510, 422, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry   x:Name="PARAMETER" Text="{Binding Param.name, Mode=TwoWay}" Placeholder="PARAM" FontSize="Micro" IsVisible="False"/>
+        </Frame>
+        <Frame x:Name="paramvalueframe"  WidthRequest="150" HeightRequest="35"  HasShadow="false" Padding="0" CornerRadius="10"  HorizontalOptions="Fill" Opacity="0.5" IsVisible="true" >
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 430, 0, 0" />
+                    <On Platform="Android" Value="25, 422, 0, 0" />
+                    <On Platform="UWP" Value="675, 422, 0, 0" />
+                </OnPlatform>
+            </Frame.Margin>
+            <Entry   x:Name="PARAMVALUE"  Text="{Binding Param.value, Mode=TwoWay}" Placeholder="Value" FontSize="Micro" IsVisible="False"/>
+        </Frame>
+
+
+        <Image Source="https://cdn4.iconfinder.com/data/icons/software-menu-icons/256/SoftwareIcons-68-512.png" Opacity="0.5"  WidthRequest="50" HeightRequest="50">
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 470, 0, 0" />
+                    <On Platform="Android" Value="25, 470, 0, 0" />
+                    <On Platform="UWP" Value="500, 470, 0, 0" />
+                </OnPlatform>
+            </Image.Margin>
+        </Image>
+        <Image Source="https://cdn4.iconfinder.com/data/icons/menu-phone-glyph/32/menu_glyph_53-512.png" Opacity="0.5"  WidthRequest="50" HeightRequest="50" x:Name="addimg" IsVisible="False">
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 470, 0, 0" />
+                    <On Platform="Android" Value="25, 470, 0, 0" />
+                    <On Platform="UWP" Value="652, 470, 0, 0" />
+                </OnPlatform>
+            </Image.Margin>
+        </Image>
+        <Image Source="https://icons-for-free.com/iconfiles/png/512/checkbox+checkmark+circle+confirm+icon-1320085880043351014.png" Opacity="0.5" WidthRequest="50" HeightRequest="50">
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 470, 0, 0" />
+                    <On Platform="Android" Value="25, 470, 0, 0" />
+                    <On Platform="UWP" Value="777, 470, 0, 0" />
+                </OnPlatform>
+            </Image.Margin>
+        </Image>
+        <Button x:Name="createButton"  Clicked="Button_Clicked_2" Command="{Binding CreateCommand}"  WidthRequest="50" HeightRequest="50" Opacity="0.2" CornerRadius="360">
+            <Button.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 430, 0, 0" />
+                    <On Platform="Android" Value="25, 422, 0, 0" />
+                    <On Platform="UWP" Value="500, 470, 0, 0" />
+                </OnPlatform>
+            </Button.Margin>
+        </Button>
+        <Button  x:Name="addnewParam" Clicked="addnewParam_Clicked" Command="{Binding AddNewParam}"  WidthRequest="50" HeightRequest="50" Opacity="0.2" CornerRadius="360" IsEnabled="False" IsVisible="False">
+            <Button.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 430, 0, 0" />
+                    <On Platform="Android" Value="25, 422, 0, 0" />
+                    <On Platform="UWP" Value="652, 470, 0, 0" />
+                </OnPlatform>
+            </Button.Margin>
+        </Button>
+        <Button  x:Name="Finish"  Clicked="Finish_Clicked"  WidthRequest="50" HeightRequest="50" Opacity="0.2" CornerRadius="360">
+            <Button.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="25, 430, 0, 0" />
+                    <On Platform="Android" Value="25, 422, 0, 0" />
+                    <On Platform="UWP" Value="777, 470, 0, 0" />
+                </OnPlatform>
+            </Button.Margin>
+        </Button>
+
+
+    </AbsoluteLayout>
 
 </ContentPage>
