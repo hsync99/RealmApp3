@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealmApp3.MainPage"
+    xmlns:itemsVm="clr-namespace:RealmApp3.ViewModels">
+
+    <ContentPage.BindingContext>
+        <itemsVm:ItemViewModels/>
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="0" BackgroundColor="White">
+        
+        
+
+        <Grid Padding="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{x:OnIdiom Desktop=100, Phone=60, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.1*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+                <RowDefinition Height="{x:OnIdiom Desktop=0.01*, Phone=0.09*, Tablet= 10*}"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="{x:OnIdiom  Desktop=1.8*, Phone=50*, Tablet= 10*}" />
+                <ColumnDefinition Width="{x:OnIdiom  Desktop=1.8*, Phone=50*, Tablet= 10*}" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="https://www.biscuit.kz/image/ru-ru/logo_ru_dark_sm.png" Aspect="{OnIdiom Phone=AspectFit, Desktop=AspectFit}" Grid.ColumnSpan="4" Grid.Row="0" Margin="0"  BackgroundColor="White"/>
+            <Frame HasShadow="True" CornerRadius="10" Grid.Row="1" Grid.Column="1" Padding="0" BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" VerticalOptions="Fill"   Opacity="0.8" BorderColor="Black">
+                <Entry x:Name="NAME"  Placeholder="Name" Text="{Binding ItemObject.name, Mode=TwoWay}"  TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="2" Grid.Column="1" Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black">
+                <Entry x:Name="MODEL"  Placeholder="Model" Text="{Binding ItemObject.model, Mode=TwoWay}" TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="3" Grid.Column="1" Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black">
+                <Entry  x:Name="SERIAL" Placeholder="Serial"  Text="{Binding ItemObject.serial, Mode=TwoWay}" TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="4" Grid.Column="1" Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black">
+                <Entry x:Name="TYPE" Placeholder="Type"  Text="{Binding ItemType.name, Mode=TwoWay}" TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="5" Grid.Column="1" Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black" >
+                <Entry     x:Name="MANUFACTORER" Placeholder="Manufacturer"  Text="{Binding Manufactorer.name, Mode=TwoWay}" TextColor="#e94c66" Opacity="1" />
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="1" Grid.Column="2" Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black">
+                <Entry x:Name="PARAMETER" Placeholder="Param" Text="{Binding Param.name, Mode=TwoWay}" TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="2" Grid.Column="2"  Padding="0" BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" Opacity="0.8" BorderColor="Black">
+                <Entry  x:Name="PARAMVALUE" Placeholder="Value" Text="{Binding Param.value, Mode=TwoWay}" TextColor="#e94c66" Opacity="1"/>
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="3" Grid.Column="2"  Padding="0"  BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }" BorderColor="Black">
+                <Button x:Name="createButton"  Clicked="Button_Clicked_2" Command="{Binding CreateCommand}" Text="Создать" BackgroundColor="White" BorderColor="Black"/>
+            </Frame>
+
+            <Frame CornerRadius="10" Grid.Row="4" Grid.Column="2"  Padding="0" BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }"  BorderColor="Black">
+                <Button x:Name="addnewParam" Clicked="addnewParam_Clicked" Command="{Binding AddNewParam}" Text="Добавить Параметер" BackgroundColor="White" BorderColor="Black"  CornerRadius="10" />
+            </Frame>
+            <Frame CornerRadius="10" Grid.Row="5" Grid.Column="2"   Padding="0" BackgroundColor="{OnPlatform Android=White,UWP=Gray, iOS=White }"  BorderColor="Black">
+                <Button x:Name="Finish"  Clicked="Finish_Clicked" Text="Показать" BackgroundColor="White" BorderColor="Black" CornerRadius="10" />
+            </Frame>
+        </Grid>
+      
+    </ScrollView>
+</ContentPage>
